@@ -1,0 +1,30 @@
+package board;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class GameFrame extends JFrame {
+    private static final int SIZE = 3; // Tamanho do tabuleiro (3x3)
+    private JButton[][] buttons;      // Botões que compõem o tabuleiro
+
+    public GameFrame() {
+        setTitle("Jogo da Velha - Tabuleiro"); // Título da janela
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Fecha o programa ao clicar no "X"
+        setSize(400, 400); // Tamanho da janela
+        setLayout(new GridLayout(SIZE, SIZE)); // Layout de grade para os botões
+
+        buttons = new JButton[SIZE][SIZE]; // Inicializa o array de botões
+        initializeBoard(); // Cria os botões no tabuleiro
+    }
+
+    private void initializeBoard() {
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                buttons[i][j] = new JButton(); // Cria um botão
+                buttons[i][j].setFont(new Font("Arial", Font.BOLD, 40)); // Define o estilo do texto no botão
+                buttons[i][j].setFocusPainted(false); // Remove o destaque ao redor do botão
+                add(buttons[i][j]); // Adiciona o botão à janela
+            }
+        }
+    }
+}
